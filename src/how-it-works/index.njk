@@ -70,7 +70,7 @@ extraStyles: |
         /* Mobile: line at 32px (center of 64px step number) */
         .timeline-line {
             position: absolute;
-            left: 32px;
+            left: 30px;
             top: 0;
             bottom: 0;
             width: 4px;
@@ -79,7 +79,7 @@ extraStyles: |
 
         .timeline-progress {
             position: absolute;
-            left: 32px;
+            left: 30px;
             top: 0;
             width: 4px;
             background: linear-gradient(180deg, #1e3a6e 0%, #6b8cce 100%);
@@ -87,12 +87,12 @@ extraStyles: |
             transition: height 0.1s ease-out;
         }
 
-        /* Desktop: line at center */
+        /* Desktop: line at exact center */
         @media (min-width: 768px) {
             .timeline-line,
             .timeline-progress {
                 left: 50%;
-                transform: translateX(-50%);
+                margin-left: -2px;
             }
         }
 
@@ -211,10 +211,10 @@ extraStyles: |
 <!-- 5-Step Process Timeline -->
 <section class="py-16 md:py-24 bg-white overflow-hidden">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="timeline-container" id="timeline">
+        <div class="timeline-container relative" id="timeline">
             <!-- Timeline Line (visible on both mobile and desktop) -->
-            <div class="timeline-line"></div>
-            <div class="timeline-progress" id="timeline-progress"></div>
+            <div class="timeline-line" aria-hidden="true"></div>
+            <div class="timeline-progress" id="timeline-progress" aria-hidden="true"></div>
 
             <!-- Step 1 -->
             <div class="timeline-step mb-16 md:mb-32 relative">

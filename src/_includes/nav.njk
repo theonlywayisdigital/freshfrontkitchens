@@ -1,14 +1,14 @@
 <!-- Navigation -->
 <nav class="fixed top-0 left-0 right-0 bg-white shadow-md z-50 transition-all duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between items-center h-24">
-            <!-- Logo -->
-            <a href="/" class="flex items-center">
-                <img src="/assets/FreshFrontKitchensLogo.png" alt="Fresh Front Kitchens" class="h-16 md:h-20 w-auto">
+        <div class="flex items-center h-24 md:h-28">
+            <!-- Logo (left) -->
+            <a href="/" class="flex items-center flex-shrink-0">
+                <img src="/assets/FreshFrontKitchensLogo.png" alt="Fresh Front Kitchens" class="h-28 md:h-[140px] w-auto">
             </a>
 
-            <!-- Desktop Navigation -->
-            <div class="hidden lg:flex items-center space-x-8">
+            <!-- Desktop Navigation (centered) -->
+            <div class="hidden lg:flex items-center justify-center flex-1 space-x-8">
                 <a href="/how-it-works/" class="text-body-text hover:text-navy font-medium transition">How It Works</a>
 
                 <!-- Services Mega Menu -->
@@ -24,12 +24,15 @@
                         More
                     </button>
                 </div>
+            </div>
 
+            <!-- CTA Button (right) -->
+            <div class="hidden lg:block flex-shrink-0">
                 <a href="/contact/" class="bg-navy text-white px-6 py-2.5 rounded-lg font-medium hover:bg-secondary-blue transition">Get a Free Quote</a>
             </div>
 
             <!-- Mobile Menu Button -->
-            <button id="mobile-menu-btn" class="lg:hidden text-navy p-2" aria-label="Toggle menu">
+            <button id="mobile-menu-btn" class="lg:hidden text-navy p-2 ml-auto" aria-label="Toggle menu">
                 <svg class="w-6 h-6 menu-open" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                 </svg>
