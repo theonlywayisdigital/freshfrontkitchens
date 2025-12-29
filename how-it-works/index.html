@@ -69,6 +69,137 @@
         html {
             scroll-behavior: smooth;
         }
+
+        /* Timeline Styles */
+        .timeline-container {
+            position: relative;
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 40px;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: #e5e7eb;
+            transform: translateX(-50%);
+        }
+
+        .timeline-progress {
+            position: absolute;
+            left: 40px;
+            top: 0;
+            width: 4px;
+            background: linear-gradient(180deg, #1e3a6e 0%, #6b8cce 100%);
+            transform: translateX(-50%);
+            height: 0%;
+            transition: height 0.1s ease-out;
+        }
+
+        @media (min-width: 768px) {
+            .timeline-line,
+            .timeline-progress {
+                left: 50%;
+            }
+        }
+
+        .timeline-step {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .timeline-step.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .timeline-step:nth-child(odd) .step-content {
+            transform: translateX(-40px);
+        }
+
+        .timeline-step:nth-child(even) .step-content {
+            transform: translateX(40px);
+        }
+
+        .timeline-step.visible .step-content {
+            transform: translateX(0);
+        }
+
+        .step-content {
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .step-number {
+            position: relative;
+            z-index: 10;
+            transition: all 0.5s ease;
+        }
+
+        .timeline-step.visible .step-number {
+            transform: scale(1.1);
+            box-shadow: 0 0 0 8px rgba(30, 58, 110, 0.2);
+        }
+
+        .step-image {
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.3s;
+        }
+
+        .timeline-step.visible .step-image {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .step-check {
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: all 0.4s ease;
+        }
+
+        .timeline-step.visible .step-check:nth-child(1) { transition-delay: 0.4s; }
+        .timeline-step.visible .step-check:nth-child(2) { transition-delay: 0.5s; }
+        .timeline-step.visible .step-check:nth-child(3) { transition-delay: 0.6s; }
+
+        .timeline-step.visible .step-check {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        @media (max-width: 767px) {
+            .timeline-step {
+                padding-left: 80px;
+            }
+
+            .timeline-step .step-number-mobile {
+                position: absolute;
+                left: 0;
+                top: 0;
+            }
+
+            .timeline-step .step-content {
+                transform: translateX(30px);
+                opacity: 0;
+                transition: all 0.6s ease;
+            }
+
+            .timeline-step.visible .step-content {
+                transform: translateX(0);
+                opacity: 1;
+            }
+
+            .timeline-step .mobile-image {
+                opacity: 0;
+                transform: translateY(20px);
+                transition: all 0.6s ease 0.3s;
+            }
+
+            .timeline-step.visible .mobile-image {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
     </style>
 </head>
 <body class="font-sans text-body-text bg-white">
@@ -121,216 +252,392 @@
         </div>
     </section>
 
-    <!-- 5-Step Process -->
-    <section class="py-16 md:py-24 bg-white">
+    <!-- 5-Step Process Timeline -->
+    <section class="py-16 md:py-24 bg-white overflow-hidden">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <!-- Step 1 -->
-            <div class="flex flex-col md:flex-row items-center gap-8 mb-16">
-                <div class="flex-shrink-0">
-                    <div class="w-24 h-24 bg-navy text-white rounded-full flex items-center justify-center text-4xl font-bold shadow-lg">
-                        1
+            <div class="timeline-container" id="timeline">
+                <!-- Timeline Line (visible on both mobile and desktop) -->
+                <div class="timeline-line"></div>
+                <div class="timeline-progress" id="timeline-progress"></div>
+
+                <!-- Step 1 -->
+                <div class="timeline-step mb-16 md:mb-32 relative">
+                    <!-- Mobile Number (left side) -->
+                    <div class="step-number-mobile md:hidden z-10">
+                        <div class="step-number w-16 h-16 bg-navy text-white rounded-full flex items-center justify-center text-2xl font-bold shadow-lg">
+                            1
+                        </div>
+                    </div>
+                    <!-- Desktop Centered Number -->
+                    <div class="hidden md:flex justify-center md:absolute md:left-1/2 md:top-0 md:-translate-x-1/2 z-10">
+                        <div class="step-number w-24 h-24 bg-navy text-white rounded-full flex items-center justify-center text-4xl font-bold shadow-lg">
+                            1
+                        </div>
+                    </div>
+                    <!-- Content -->
+                    <div class="step-content">
+                        <h2 class="text-2xl md:text-3xl font-bold text-navy mb-4 md:hidden">Free Home Consultation</h2>
+                        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=400&q=80" alt="Kitchen consultation" class="mobile-image md:hidden w-full h-48 object-cover rounded-xl shadow-lg mb-4">
+                        <p class="text-body-text md:hidden mb-4">
+                            We visit your home at a time that suits you. We'll look at your existing kitchen, listen to your ideas, and discuss the possibilities. There's no pressure, no obligation &mdash; just a friendly chat about how we can transform your space.
+                        </p>
+                        <ul class="mt-4 space-y-2 text-body-text md:hidden">
+                            <li class="step-check flex items-center">
+                                <svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Flexible appointment times
+                            </li>
+                            <li class="step-check flex items-center">
+                                <svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Takes about 30-45 minutes
+                            </li>
+                            <li class="step-check flex items-center">
+                                <svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                No hard sell, ever
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- Desktop Content Grid -->
+                    <div class="hidden md:grid md:grid-cols-2 gap-8 md:pt-4">
+                        <div class="text-right pr-20">
+                            <h2 class="text-3xl font-bold text-navy mb-4">Free Home Consultation</h2>
+                            <p class="text-body-text text-lg mb-4">
+                                We visit your home at a time that suits you. We'll look at your existing kitchen, listen to your ideas, and discuss the possibilities. There's no pressure, no obligation &mdash; just a friendly chat about how we can transform your space.
+                            </p>
+                            <ul class="mt-4 space-y-2 text-body-text">
+                                <li class="step-check flex items-center justify-end">
+                                    <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    Flexible appointment times
+                                </li>
+                                <li class="step-check flex items-center justify-end">
+                                    <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    Takes about 30-45 minutes
+                                </li>
+                                <li class="step-check flex items-center justify-end">
+                                    <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    No hard sell, ever
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="flex pl-20 items-start">
+                            <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=400&q=80" alt="Kitchen consultation" class="step-image w-64 h-48 object-cover rounded-xl shadow-lg">
+                        </div>
                     </div>
                 </div>
-                <div class="flex-1 text-center md:text-left">
-                    <h2 class="text-2xl md:text-3xl font-bold text-navy mb-4">Free Home Consultation</h2>
-                    <p class="text-body-text text-lg">
-                        We visit your home at a time that suits you. We'll look at your existing kitchen, listen to your ideas, and discuss the possibilities. There's no pressure, no obligation &mdash; just a friendly chat about how we can transform your space.
-                    </p>
-                    <ul class="mt-4 space-y-2 text-body-text">
-                        <li class="flex items-center justify-center md:justify-start">
-                            <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                            </svg>
-                            Flexible appointment times
-                        </li>
-                        <li class="flex items-center justify-center md:justify-start">
-                            <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                            </svg>
-                            Takes about 30-45 minutes
-                        </li>
-                        <li class="flex items-center justify-center md:justify-start">
-                            <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                            </svg>
-                            No hard sell, ever
-                        </li>
-                    </ul>
-                </div>
-                <div class="flex-shrink-0 hidden lg:block">
-                    <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=400&q=80" alt="Kitchen consultation" class="w-64 h-48 object-cover rounded-xl shadow-lg">
-                </div>
-            </div>
 
-            <!-- Connector Line -->
-            <div class="hidden md:flex justify-center mb-16">
-                <div class="w-0.5 h-16 bg-gray-200"></div>
-            </div>
-
-            <!-- Step 2 -->
-            <div class="flex flex-col md:flex-row-reverse items-center gap-8 mb-16">
-                <div class="flex-shrink-0">
-                    <div class="w-24 h-24 bg-navy text-white rounded-full flex items-center justify-center text-4xl font-bold shadow-lg">
-                        2
+                <!-- Step 2 -->
+                <div class="timeline-step mb-16 md:mb-32 relative">
+                    <!-- Mobile Number (left side) -->
+                    <div class="step-number-mobile md:hidden z-10">
+                        <div class="step-number w-16 h-16 bg-navy text-white rounded-full flex items-center justify-center text-2xl font-bold shadow-lg">
+                            2
+                        </div>
+                    </div>
+                    <!-- Desktop Centered Number -->
+                    <div class="hidden md:flex justify-center md:absolute md:left-1/2 md:top-0 md:-translate-x-1/2 z-10">
+                        <div class="step-number w-24 h-24 bg-navy text-white rounded-full flex items-center justify-center text-4xl font-bold shadow-lg">
+                            2
+                        </div>
+                    </div>
+                    <!-- Mobile Content -->
+                    <div class="step-content md:hidden">
+                        <h2 class="text-2xl font-bold text-navy mb-4">Choose Your Style</h2>
+                        <img src="https://images.unsplash.com/photo-1556909114-44e3e70034e2?w=400&q=80" alt="Kitchen design choices" class="mobile-image w-full h-48 object-cover rounded-xl shadow-lg mb-4">
+                        <p class="text-body-text mb-4">
+                            This is the fun part! Browse our range of door styles, colours, worktops, and handles. We'll help you create the perfect combination for your taste and home. Want something classic? Modern? On-trend? We've got you covered.
+                        </p>
+                        <ul class="mt-4 space-y-2 text-body-text">
+                            <li class="step-check flex items-center">
+                                <svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Wide range of styles
+                            </li>
+                            <li class="step-check flex items-center">
+                                <svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Sample materials available
+                            </li>
+                            <li class="step-check flex items-center">
+                                <svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Expert design advice
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- Desktop Content Grid -->
+                    <div class="hidden md:grid md:grid-cols-2 gap-8 md:pt-4">
+                        <div class="flex pr-20 items-start justify-end">
+                            <img src="https://images.unsplash.com/photo-1556909114-44e3e70034e2?w=400&q=80" alt="Kitchen design choices" class="step-image w-64 h-48 object-cover rounded-xl shadow-lg">
+                        </div>
+                        <div class="text-left pl-20">
+                            <h2 class="text-3xl font-bold text-navy mb-4">Choose Your Style</h2>
+                            <p class="text-body-text text-lg mb-4">
+                                This is the fun part! Browse our range of door styles, colours, worktops, and handles. We'll help you create the perfect combination for your taste and home. Want something classic? Modern? On-trend? We've got you covered.
+                            </p>
+                            <ul class="mt-4 space-y-2 text-body-text">
+                                <li class="step-check flex items-center">
+                                    <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    Wide range of styles
+                                </li>
+                                <li class="step-check flex items-center">
+                                    <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    Sample materials available
+                                </li>
+                                <li class="step-check flex items-center">
+                                    <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    Expert design advice
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-                <div class="flex-1 text-center md:text-right">
-                    <h2 class="text-2xl md:text-3xl font-bold text-navy mb-4">Detailed Quote</h2>
-                    <p class="text-body-text text-lg">
-                        Within a few days, you'll receive a detailed, itemised quote. Everything is clearly laid out &mdash; no hidden costs, no surprises. We'll explain exactly what's included and answer any questions you have.
-                    </p>
-                    <ul class="mt-4 space-y-2 text-body-text">
-                        <li class="flex items-center justify-center md:justify-end">
-                            <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                            </svg>
-                            Transparent pricing
-                        </li>
-                        <li class="flex items-center justify-center md:justify-end">
-                            <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                            </svg>
-                            No hidden extras
-                        </li>
-                        <li class="flex items-center justify-center md:justify-end">
-                            <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                            </svg>
-                            Valid for 30 days
-                        </li>
-                    </ul>
-                </div>
-                <div class="flex-shrink-0 hidden lg:block">
-                    <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400&q=80" alt="Kitchen quote" class="w-64 h-48 object-cover rounded-xl shadow-lg">
-                </div>
-            </div>
 
-            <!-- Connector Line -->
-            <div class="hidden md:flex justify-center mb-16">
-                <div class="w-0.5 h-16 bg-gray-200"></div>
-            </div>
-
-            <!-- Step 3 -->
-            <div class="flex flex-col md:flex-row items-center gap-8 mb-16">
-                <div class="flex-shrink-0">
-                    <div class="w-24 h-24 bg-navy text-white rounded-full flex items-center justify-center text-4xl font-bold shadow-lg">
-                        3
+                <!-- Step 3 -->
+                <div class="timeline-step mb-16 md:mb-32 relative">
+                    <!-- Mobile Number (left side) -->
+                    <div class="step-number-mobile md:hidden z-10">
+                        <div class="step-number w-16 h-16 bg-navy text-white rounded-full flex items-center justify-center text-2xl font-bold shadow-lg">
+                            3
+                        </div>
+                    </div>
+                    <!-- Desktop Centered Number -->
+                    <div class="hidden md:flex justify-center md:absolute md:left-1/2 md:top-0 md:-translate-x-1/2 z-10">
+                        <div class="step-number w-24 h-24 bg-navy text-white rounded-full flex items-center justify-center text-4xl font-bold shadow-lg">
+                            3
+                        </div>
+                    </div>
+                    <!-- Mobile Content -->
+                    <div class="step-content md:hidden">
+                        <h2 class="text-2xl font-bold text-navy mb-4">Detailed Quote</h2>
+                        <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400&q=80" alt="Kitchen quote" class="mobile-image w-full h-48 object-cover rounded-xl shadow-lg mb-4">
+                        <p class="text-body-text mb-4">
+                            Within a few days, you'll receive a detailed, itemised quote. Everything is clearly laid out &mdash; no hidden costs, no surprises. We'll explain exactly what's included and answer any questions you have.
+                        </p>
+                        <ul class="mt-4 space-y-2 text-body-text">
+                            <li class="step-check flex items-center">
+                                <svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Transparent pricing
+                            </li>
+                            <li class="step-check flex items-center">
+                                <svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                No hidden extras
+                            </li>
+                            <li class="step-check flex items-center">
+                                <svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Valid for 30 days
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- Desktop Content Grid -->
+                    <div class="hidden md:grid md:grid-cols-2 gap-8 md:pt-4">
+                        <div class="text-right pr-20">
+                            <h2 class="text-3xl font-bold text-navy mb-4">Detailed Quote</h2>
+                            <p class="text-body-text text-lg mb-4">
+                                Within a few days, you'll receive a detailed, itemised quote. Everything is clearly laid out &mdash; no hidden costs, no surprises. We'll explain exactly what's included and answer any questions you have.
+                            </p>
+                            <ul class="mt-4 space-y-2 text-body-text">
+                                <li class="step-check flex items-center justify-end">
+                                    <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    Transparent pricing
+                                </li>
+                                <li class="step-check flex items-center justify-end">
+                                    <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    No hidden extras
+                                </li>
+                                <li class="step-check flex items-center justify-end">
+                                    <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    Valid for 30 days
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="flex pl-20 items-start">
+                            <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400&q=80" alt="Kitchen quote" class="step-image w-64 h-48 object-cover rounded-xl shadow-lg">
+                        </div>
                     </div>
                 </div>
-                <div class="flex-1 text-center md:text-left">
-                    <h2 class="text-2xl md:text-3xl font-bold text-navy mb-4">Choose Your Style</h2>
-                    <p class="text-body-text text-lg">
-                        This is the fun part! Browse our range of door styles, colours, worktops, and handles. We'll help you create the perfect combination for your taste and home. Want something classic? Modern? On-trend? We've got you covered.
-                    </p>
-                    <ul class="mt-4 space-y-2 text-body-text">
-                        <li class="flex items-center justify-center md:justify-start">
-                            <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                            </svg>
-                            Wide range of styles
-                        </li>
-                        <li class="flex items-center justify-center md:justify-start">
-                            <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                            </svg>
-                            Sample materials available
-                        </li>
-                        <li class="flex items-center justify-center md:justify-start">
-                            <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                            </svg>
-                            Expert design advice
-                        </li>
-                    </ul>
-                </div>
-                <div class="flex-shrink-0 hidden lg:block">
-                    <img src="https://images.unsplash.com/photo-1556909114-44e3e70034e2?w=400&q=80" alt="Kitchen design choices" class="w-64 h-48 object-cover rounded-xl shadow-lg">
-                </div>
-            </div>
 
-            <!-- Connector Line -->
-            <div class="hidden md:flex justify-center mb-16">
-                <div class="w-0.5 h-16 bg-gray-200"></div>
-            </div>
-
-            <!-- Step 4 -->
-            <div class="flex flex-col md:flex-row-reverse items-center gap-8 mb-16">
-                <div class="flex-shrink-0">
-                    <div class="w-24 h-24 bg-navy text-white rounded-full flex items-center justify-center text-4xl font-bold shadow-lg">
-                        4
+                <!-- Step 4 -->
+                <div class="timeline-step mb-16 md:mb-32 relative">
+                    <!-- Mobile Number (left side) -->
+                    <div class="step-number-mobile md:hidden z-10">
+                        <div class="step-number w-16 h-16 bg-navy text-white rounded-full flex items-center justify-center text-2xl font-bold shadow-lg">
+                            4
+                        </div>
+                    </div>
+                    <!-- Desktop Centered Number -->
+                    <div class="hidden md:flex justify-center md:absolute md:left-1/2 md:top-0 md:-translate-x-1/2 z-10">
+                        <div class="step-number w-24 h-24 bg-navy text-white rounded-full flex items-center justify-center text-4xl font-bold shadow-lg">
+                            4
+                        </div>
+                    </div>
+                    <!-- Mobile Content -->
+                    <div class="step-content md:hidden">
+                        <h2 class="text-2xl font-bold text-navy mb-4">Professional Installation</h2>
+                        <img src="https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?w=400&q=80" alt="Kitchen installation" class="mobile-image w-full h-48 object-cover rounded-xl shadow-lg mb-4">
+                        <p class="text-body-text mb-4">
+                            Our skilled fitters arrive on the agreed date and get straight to work. Most kitchens are completed in just 2-3 days. We work cleanly and efficiently, minimising disruption to your daily life.
+                        </p>
+                        <ul class="mt-4 space-y-2 text-body-text">
+                            <li class="step-check flex items-center">
+                                <svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                2-3 day installation
+                            </li>
+                            <li class="step-check flex items-center">
+                                <svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Clean, tidy workmanship
+                            </li>
+                            <li class="step-check flex items-center">
+                                <svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Minimal disruption
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- Desktop Content Grid -->
+                    <div class="hidden md:grid md:grid-cols-2 gap-8 md:pt-4">
+                        <div class="flex pr-20 items-start justify-end">
+                            <img src="https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?w=400&q=80" alt="Kitchen installation" class="step-image w-64 h-48 object-cover rounded-xl shadow-lg">
+                        </div>
+                        <div class="text-left pl-20">
+                            <h2 class="text-3xl font-bold text-navy mb-4">Professional Installation</h2>
+                            <p class="text-body-text text-lg mb-4">
+                                Our skilled fitters arrive on the agreed date and get straight to work. Most kitchens are completed in just 2-3 days. We work cleanly and efficiently, minimising disruption to your daily life.
+                            </p>
+                            <ul class="mt-4 space-y-2 text-body-text">
+                                <li class="step-check flex items-center">
+                                    <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    2-3 day installation
+                                </li>
+                                <li class="step-check flex items-center">
+                                    <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    Clean, tidy workmanship
+                                </li>
+                                <li class="step-check flex items-center">
+                                    <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    Minimal disruption
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-                <div class="flex-1 text-center md:text-right">
-                    <h2 class="text-2xl md:text-3xl font-bold text-navy mb-4">Professional Installation</h2>
-                    <p class="text-body-text text-lg">
-                        Our skilled fitters arrive on the agreed date and get straight to work. Most kitchens are completed in just 2-3 days. We work cleanly and efficiently, minimising disruption to your daily life.
-                    </p>
-                    <ul class="mt-4 space-y-2 text-body-text">
-                        <li class="flex items-center justify-center md:justify-end">
-                            <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                            </svg>
-                            2-3 day installation
-                        </li>
-                        <li class="flex items-center justify-center md:justify-end">
-                            <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                            </svg>
-                            Clean, tidy workmanship
-                        </li>
-                        <li class="flex items-center justify-center md:justify-end">
-                            <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                            </svg>
-                            Minimal disruption
-                        </li>
-                    </ul>
-                </div>
-                <div class="flex-shrink-0 hidden lg:block">
-                    <img src="https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?w=400&q=80" alt="Kitchen installation" class="w-64 h-48 object-cover rounded-xl shadow-lg">
-                </div>
-            </div>
 
-            <!-- Connector Line -->
-            <div class="hidden md:flex justify-center mb-16">
-                <div class="w-0.5 h-16 bg-gray-200"></div>
-            </div>
-
-            <!-- Step 5 -->
-            <div class="flex flex-col md:flex-row items-center gap-8">
-                <div class="flex-shrink-0">
-                    <div class="w-24 h-24 bg-secondary-blue text-white rounded-full flex items-center justify-center text-4xl font-bold shadow-lg">
-                        5
+                <!-- Step 5 -->
+                <div class="timeline-step relative">
+                    <!-- Mobile Number (left side) -->
+                    <div class="step-number-mobile md:hidden z-10">
+                        <div class="step-number w-16 h-16 bg-secondary-blue text-white rounded-full flex items-center justify-center text-2xl font-bold shadow-lg">
+                            5
+                        </div>
                     </div>
-                </div>
-                <div class="flex-1 text-center md:text-left">
-                    <h2 class="text-2xl md:text-3xl font-bold text-navy mb-4">Enjoy Your New Kitchen!</h2>
-                    <p class="text-body-text text-lg">
-                        That's it! Step back and admire your transformed kitchen. The same layout you know and love, but with a completely fresh look that feels brand new. Time to enjoy cooking in style.
-                    </p>
-                    <ul class="mt-4 space-y-2 text-body-text">
-                        <li class="flex items-center justify-center md:justify-start">
-                            <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                            </svg>
-                            Brand new look
-                        </li>
-                        <li class="flex items-center justify-center md:justify-start">
-                            <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                            </svg>
-                            Same trusted layout
-                        </li>
-                        <li class="flex items-center justify-center md:justify-start">
-                            <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                            </svg>
-                            50% less than replacement
-                        </li>
-                    </ul>
-                </div>
-                <div class="flex-shrink-0 hidden lg:block">
-                    <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&q=80" alt="Beautiful finished kitchen" class="w-64 h-48 object-cover rounded-xl shadow-lg">
+                    <!-- Desktop Centered Number -->
+                    <div class="hidden md:flex justify-center md:absolute md:left-1/2 md:top-0 md:-translate-x-1/2 z-10">
+                        <div class="step-number w-24 h-24 bg-secondary-blue text-white rounded-full flex items-center justify-center text-4xl font-bold shadow-lg">
+                            5
+                        </div>
+                    </div>
+                    <!-- Mobile Content -->
+                    <div class="step-content md:hidden">
+                        <h2 class="text-2xl font-bold text-navy mb-4">Enjoy Your New Kitchen!</h2>
+                        <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&q=80" alt="Beautiful finished kitchen" class="mobile-image w-full h-48 object-cover rounded-xl shadow-lg mb-4">
+                        <p class="text-body-text mb-4">
+                            That's it! Step back and admire your transformed kitchen. The same layout you know and love, but with a completely fresh look that feels brand new. Time to enjoy cooking in style.
+                        </p>
+                        <ul class="mt-4 space-y-2 text-body-text">
+                            <li class="step-check flex items-center">
+                                <svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Brand new look
+                            </li>
+                            <li class="step-check flex items-center">
+                                <svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Same trusted layout
+                            </li>
+                            <li class="step-check flex items-center">
+                                <svg class="w-5 h-5 text-green-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                50% less than replacement
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- Desktop Content Grid -->
+                    <div class="hidden md:grid md:grid-cols-2 gap-8 md:pt-4">
+                        <div class="text-right pr-20">
+                            <h2 class="text-3xl font-bold text-navy mb-4">Enjoy Your New Kitchen!</h2>
+                            <p class="text-body-text text-lg mb-4">
+                                That's it! Step back and admire your transformed kitchen. The same layout you know and love, but with a completely fresh look that feels brand new. Time to enjoy cooking in style.
+                            </p>
+                            <ul class="mt-4 space-y-2 text-body-text">
+                                <li class="step-check flex items-center justify-end">
+                                    <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    Brand new look
+                                </li>
+                                <li class="step-check flex items-center justify-end">
+                                    <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    Same trusted layout
+                                </li>
+                                <li class="step-check flex items-center justify-end">
+                                    <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    50% less than replacement
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="flex pl-20 items-start">
+                            <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&q=80" alt="Beautiful finished kitchen" class="step-image w-64 h-48 object-cover rounded-xl shadow-lg">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -546,6 +853,61 @@
             }
             lastScrollY = window.scrollY;
         });
+
+        // Timeline scroll animations
+        const timelineSteps = document.querySelectorAll('.timeline-step');
+        const timelineProgress = document.getElementById('timeline-progress');
+        const timeline = document.getElementById('timeline');
+
+        // Intersection Observer for step animations
+        const observerOptions = {
+            root: null,
+            rootMargin: '-10% 0px -10% 0px',
+            threshold: 0.2
+        };
+
+        const stepObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        timelineSteps.forEach(step => {
+            stepObserver.observe(step);
+        });
+
+        // Progress line animation based on scroll
+        function updateTimelineProgress() {
+            if (!timeline || !timelineProgress) return;
+
+            const timelineRect = timeline.getBoundingClientRect();
+            const timelineTop = timelineRect.top + window.scrollY;
+            const timelineHeight = timeline.offsetHeight;
+            const scrollPosition = window.scrollY + window.innerHeight * 0.5;
+
+            // Calculate progress percentage
+            let progress = (scrollPosition - timelineTop) / timelineHeight;
+            progress = Math.max(0, Math.min(1, progress));
+
+            timelineProgress.style.height = (progress * 100) + '%';
+        }
+
+        // Update on scroll with throttling for performance
+        let ticking = false;
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    updateTimelineProgress();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+
+        // Initial update
+        updateTimelineProgress();
     </script>
 </body>
 </html>
