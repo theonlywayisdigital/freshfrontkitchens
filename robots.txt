@@ -1,0 +1,8 @@
+# Robots.txt for Fresh Front Kitchens
+# https://freshfrontkitchens.co.uk
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://freshfrontkitchens.co.uk/sitemap.xml

@@ -1,0 +1,140 @@
+/* Fresh Front Kitchens - Custom CSS Overrides */
+
+/* Custom font import (optional - using system fonts by default) */
+/* @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap'); */
+
+/* Smooth transitions for interactive elements */
+a, button, input, select, textarea {
+    transition: all 0.2s ease-in-out;
+}
+
+/* Custom focus styles for accessibility */
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(30, 58, 110, 0.2);
+}
+
+/* Form validation styles */
+input:invalid:not(:placeholder-shown),
+textarea:invalid:not(:placeholder-shown) {
+    border-color: #ef4444;
+}
+
+input:valid:not(:placeholder-shown),
+textarea:valid:not(:placeholder-shown) {
+    border-color: #22c55e;
+}
+
+/* Custom scrollbar (webkit browsers) */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #6b8cce;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #1e3a6e;
+}
+
+/* Animation for cards on hover */
+.hover\:shadow-xl:hover {
+    transform: translateY(-2px);
+}
+
+/* Loading state for buttons */
+button[disabled] {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+/* Mobile menu animation */
+#mobile-menu {
+    transition: max-height 0.3s ease-in-out;
+    overflow: hidden;
+}
+
+#mobile-menu.hidden {
+    max-height: 0;
+    padding-bottom: 0;
+}
+
+#mobile-menu:not(.hidden) {
+    max-height: 500px;
+}
+
+/* Hero section gradient animation (subtle) */
+@keyframes gradientShift {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+/* Responsive typography adjustments */
+@media (max-width: 640px) {
+    h1 {
+        font-size: 2rem;
+        line-height: 1.2;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+}
+
+/* Print styles */
+@media print {
+    nav, footer, .no-print {
+        display: none !important;
+    }
+
+    body {
+        font-size: 12pt;
+        line-height: 1.5;
+    }
+
+    a {
+        text-decoration: underline;
+    }
+}
+
+/* File upload drag-and-drop styling */
+.border-dashed:hover {
+    border-color: #1e3a6e;
+    background-color: #f9fafb;
+}
+
+/* Checkbox custom styling */
+input[type="checkbox"] {
+    accent-color: #1e3a6e;
+}
+
+/* Selection highlight color */
+::selection {
+    background-color: #e8e6f2;
+    color: #1e3a6e;
+}
+
+/* Form placeholder styling */
+::placeholder {
+    color: #9ca3af;
+    opacity: 1;
+}
+
+/* Sticky nav shadow on scroll (can be enhanced with JS) */
+nav.scrolled {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
