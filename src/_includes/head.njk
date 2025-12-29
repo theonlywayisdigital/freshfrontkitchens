@@ -66,22 +66,19 @@
     html {
         scroll-behavior: smooth;
     }
-    /* Mega Menu Styles */
+    /* Full-width Mega Menu Styles */
     .mega-menu {
         opacity: 0;
         visibility: hidden;
         transform: translateY(-10px);
-        transition: all 0.2s ease-in-out;
+        transition: all 0.25s ease-in-out;
+        pointer-events: none;
     }
     .mega-menu.active {
         opacity: 1;
         visibility: visible;
         transform: translateY(0);
-    }
-    .nav-item:hover .mega-menu {
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0);
+        pointer-events: auto;
     }
     .nav-trigger {
         position: relative;
@@ -98,7 +95,6 @@
         margin-bottom: 2px;
         transition: transform 0.2s ease;
     }
-    .nav-item:hover .nav-trigger::after,
     .nav-trigger.active::after {
         transform: rotate(-135deg);
         margin-bottom: -2px;

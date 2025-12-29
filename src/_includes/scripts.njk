@@ -22,16 +22,89 @@
         });
     });
 
+    // Full-width mega menu handling
+    const servicesMegaMenu = document.getElementById('services-mega-menu');
+    const moreMegaMenu = document.getElementById('more-mega-menu');
+    const servicesNavItem = document.querySelector('[data-menu="services"]');
+    const moreNavItem = document.querySelector('[data-menu="more"]');
+
+    function closeAllMegaMenus() {
+        servicesMegaMenu?.classList.remove('active');
+        moreMegaMenu?.classList.remove('active');
+        document.querySelectorAll('.nav-trigger').forEach(t => {
+            t.classList.remove('active');
+            t.setAttribute('aria-expanded', 'false');
+        });
+    }
+
+    function openMegaMenu(menuType) {
+        closeAllMegaMenus();
+        if (menuType === 'services' && servicesMegaMenu) {
+            servicesMegaMenu.classList.add('active');
+            servicesNavItem?.querySelector('.nav-trigger')?.classList.add('active');
+            servicesNavItem?.querySelector('.nav-trigger')?.setAttribute('aria-expanded', 'true');
+        } else if (menuType === 'more' && moreMegaMenu) {
+            moreMegaMenu.classList.add('active');
+            moreNavItem?.querySelector('.nav-trigger')?.classList.add('active');
+            moreNavItem?.querySelector('.nav-trigger')?.setAttribute('aria-expanded', 'true');
+        }
+    }
+
+    // Hover behavior for desktop mega menus
+    let menuCloseTimeout;
+
+    function handleMenuEnter(menuType) {
+        clearTimeout(menuCloseTimeout);
+        openMegaMenu(menuType);
+    }
+
+    function handleMenuLeave() {
+        menuCloseTimeout = setTimeout(() => {
+            closeAllMegaMenus();
+        }, 150);
+    }
+
+    // Nav item hover events
+    servicesNavItem?.addEventListener('mouseenter', () => handleMenuEnter('services'));
+    servicesNavItem?.addEventListener('mouseleave', handleMenuLeave);
+    moreNavItem?.addEventListener('mouseenter', () => handleMenuEnter('more'));
+    moreNavItem?.addEventListener('mouseleave', handleMenuLeave);
+
+    // Mega menu hover events (keep menu open when hovering over it)
+    servicesMegaMenu?.addEventListener('mouseenter', () => {
+        clearTimeout(menuCloseTimeout);
+    });
+    servicesMegaMenu?.addEventListener('mouseleave', handleMenuLeave);
+    moreMegaMenu?.addEventListener('mouseenter', () => {
+        clearTimeout(menuCloseTimeout);
+    });
+    moreMegaMenu?.addEventListener('mouseleave', handleMenuLeave);
+
+    // Click behavior for nav triggers
+    servicesNavItem?.querySelector('.nav-trigger')?.addEventListener('click', (e) => {
+        e.preventDefault();
+        const isOpen = servicesMegaMenu?.classList.contains('active');
+        if (isOpen) {
+            closeAllMegaMenus();
+        } else {
+            openMegaMenu('services');
+        }
+    });
+
+    moreNavItem?.querySelector('.nav-trigger')?.addEventListener('click', (e) => {
+        e.preventDefault();
+        const isOpen = moreMegaMenu?.classList.contains('active');
+        if (isOpen) {
+            closeAllMegaMenus();
+        } else {
+            openMegaMenu('more');
+        }
+    });
+
     // Close mega menus when clicking outside
     document.addEventListener('click', (e) => {
-        if (!e.target.closest('.nav-item')) {
-            document.querySelectorAll('.mega-menu').forEach(menu => {
-                menu.classList.remove('active');
-            });
-            document.querySelectorAll('.nav-trigger').forEach(trigger => {
-                trigger.classList.remove('active');
-                trigger.setAttribute('aria-expanded', 'false');
-            });
+        if (!e.target.closest('.nav-item') && !e.target.closest('.mega-menu')) {
+            closeAllMegaMenus();
         }
     });
 
@@ -40,32 +113,18 @@
         trigger.addEventListener('keydown', (e) => {
             if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
-                const megaMenu = trigger.nextElementSibling;
-                const isOpen = megaMenu.classList.contains('active');
+                const menuType = trigger.closest('.nav-item')?.dataset.menu;
+                const isOpen = (menuType === 'services' && servicesMegaMenu?.classList.contains('active')) ||
+                               (menuType === 'more' && moreMegaMenu?.classList.contains('active'));
 
-                // Close all menus first
-                document.querySelectorAll('.mega-menu').forEach(menu => {
-                    menu.classList.remove('active');
-                });
-                document.querySelectorAll('.nav-trigger').forEach(t => {
-                    t.classList.remove('active');
-                    t.setAttribute('aria-expanded', 'false');
-                });
-
-                if (!isOpen) {
-                    megaMenu.classList.add('active');
-                    trigger.classList.add('active');
-                    trigger.setAttribute('aria-expanded', 'true');
+                if (isOpen) {
+                    closeAllMegaMenus();
+                } else {
+                    openMegaMenu(menuType);
                 }
             }
             if (e.key === 'Escape') {
-                document.querySelectorAll('.mega-menu').forEach(menu => {
-                    menu.classList.remove('active');
-                });
-                document.querySelectorAll('.nav-trigger').forEach(t => {
-                    t.classList.remove('active');
-                    t.setAttribute('aria-expanded', 'false');
-                });
+                closeAllMegaMenus();
             }
         });
     });
@@ -81,6 +140,9 @@
             menuOpen.classList.remove('hidden');
             menuClose.classList.add('hidden');
         }
+
+        // Close mega menus on scroll
+        closeAllMegaMenus();
 
         if (window.scrollY > lastScrollY && window.scrollY > 100) {
             nav.style.transform = 'translateY(-100%)';

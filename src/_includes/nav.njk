@@ -1,10 +1,10 @@
 <!-- Navigation -->
 <nav class="fixed top-0 left-0 right-0 bg-white shadow-md z-50 transition-all duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between items-center h-20">
+        <div class="flex justify-between items-center h-24">
             <!-- Logo -->
             <a href="/" class="flex items-center">
-                <img src="/assets/FreshFrontKitchensLogo.png" alt="Fresh Front Kitchens" class="h-14 w-auto">
+                <img src="/assets/FreshFrontKitchensLogo.png" alt="Fresh Front Kitchens" class="h-16 md:h-20 w-auto">
             </a>
 
             <!-- Desktop Navigation -->
@@ -12,128 +12,17 @@
                 <a href="/how-it-works/" class="text-body-text hover:text-navy font-medium transition">How It Works</a>
 
                 <!-- Services Mega Menu -->
-                <div class="nav-item relative">
+                <div class="nav-item relative" data-menu="services">
                     <button class="nav-trigger text-body-text hover:text-navy font-medium transition flex items-center" aria-expanded="false" aria-haspopup="true">
                         Services
                     </button>
-                    <div class="mega-menu absolute top-full left-1/2 -translate-x-1/2 pt-4 w-[700px]">
-                        <div class="bg-white rounded-xl shadow-2xl border border-gray-100 overflow-hidden">
-                            <div class="grid grid-cols-5">
-                                <!-- Service Links -->
-                                <div class="col-span-3 p-6">
-                                    <div class="grid grid-cols-1 gap-4">
-                                        <a href="/services/cabinet-doors/" class="group flex items-start p-3 rounded-lg hover:bg-lavender/50 transition">
-                                            <div class="flex-shrink-0 w-10 h-10 bg-lavender rounded-lg flex items-center justify-center mr-4 group-hover:bg-navy transition">
-                                                <svg class="w-5 h-5 text-navy group-hover:text-white transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6z"/>
-                                                </svg>
-                                            </div>
-                                            <div>
-                                                <span class="block font-semibold text-navy">Cabinet Doors & Panels</span>
-                                                <span class="text-sm text-body-text">Replace your doors, keep your cabinets, save thousands</span>
-                                            </div>
-                                        </a>
-                                        <a href="/services/worktops/" class="group flex items-start p-3 rounded-lg hover:bg-lavender/50 transition">
-                                            <div class="flex-shrink-0 w-10 h-10 bg-lavender rounded-lg flex items-center justify-center mr-4 group-hover:bg-navy transition">
-                                                <svg class="w-5 h-5 text-navy group-hover:text-white transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5h16a1 1 0 011 1v3a1 1 0 01-1 1H4a1 1 0 01-1-1V6a1 1 0 011-1z"/>
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 10v9m12-9v9"/>
-                                                </svg>
-                                            </div>
-                                            <div>
-                                                <span class="block font-semibold text-navy">Worktops</span>
-                                                <span class="text-sm text-body-text">Laminate to quartz - expertly templated and fitted</span>
-                                            </div>
-                                        </a>
-                                        <a href="/services/handles-hardware/" class="group flex items-start p-3 rounded-lg hover:bg-lavender/50 transition">
-                                            <div class="flex-shrink-0 w-10 h-10 bg-lavender rounded-lg flex items-center justify-center mr-4 group-hover:bg-navy transition">
-                                                <svg class="w-5 h-5 text-navy group-hover:text-white transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/>
-                                                </svg>
-                                            </div>
-                                            <div>
-                                                <span class="block font-semibold text-navy">Handles & Hardware</span>
-                                                <span class="text-sm text-body-text">The finishing touches that make all the difference</span>
-                                            </div>
-                                        </a>
-                                        <a href="/services/sinks-appliances/" class="group flex items-start p-3 rounded-lg hover:bg-lavender/50 transition">
-                                            <div class="flex-shrink-0 w-10 h-10 bg-lavender rounded-lg flex items-center justify-center mr-4 group-hover:bg-navy transition">
-                                                <svg class="w-5 h-5 text-navy group-hover:text-white transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
-                                                </svg>
-                                            </div>
-                                            <div>
-                                                <span class="block font-semibold text-navy">Sinks & Appliances</span>
-                                                <span class="text-sm text-body-text">Complete your transformation with new fixtures</span>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                                <!-- CTA Panel -->
-                                <div class="col-span-2 bg-gradient-to-br from-lavender to-lavender/50 p-6 flex flex-col justify-center">
-                                    <h4 class="font-bold text-navy mb-2">Not sure where to start?</h4>
-                                    <p class="text-sm text-body-text mb-4">Book a free home consultation and we'll help you plan your perfect kitchen makeover.</p>
-                                    <a href="/contact/" class="inline-block bg-navy text-white text-center px-5 py-2.5 rounded-lg font-medium hover:bg-secondary-blue transition text-sm">
-                                        Get a Free Quote
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
 
                 <!-- More Mega Menu -->
-                <div class="nav-item relative">
+                <div class="nav-item relative" data-menu="more">
                     <button class="nav-trigger text-body-text hover:text-navy font-medium transition flex items-center" aria-expanded="false" aria-haspopup="true">
                         More
                     </button>
-                    <div class="mega-menu absolute top-full right-0 pt-4 w-[600px]">
-                        <div class="bg-white rounded-xl shadow-2xl border border-gray-100 overflow-hidden">
-                            <div class="grid grid-cols-5">
-                                <!-- Link Columns -->
-                                <div class="col-span-3 p-6">
-                                    <div class="grid grid-cols-3 gap-6">
-                                        <!-- Get Started -->
-                                        <div>
-                                            <h5 class="font-semibold text-navy mb-3 text-sm uppercase tracking-wide">Get Started</h5>
-                                            <ul class="space-y-2">
-                                                <li><a href="/founding-customer/" class="text-body-text hover:text-navy transition text-sm">Founding Customer</a></li>
-                                                <li><a href="/contact/" class="text-body-text hover:text-navy transition text-sm">Contact</a></li>
-                                                <li><a href="/faqs/" class="text-body-text hover:text-navy transition text-sm">FAQs</a></li>
-                                            </ul>
-                                        </div>
-                                        <!-- Company -->
-                                        <div>
-                                            <h5 class="font-semibold text-navy mb-3 text-sm uppercase tracking-wide">Company</h5>
-                                            <ul class="space-y-2">
-                                                <li><a href="/about/" class="text-body-text hover:text-navy transition text-sm">About</a></li>
-                                                <li><a href="/gallery/" class="text-body-text hover:text-navy transition text-sm">Gallery</a></li>
-                                                <li><a href="/testimonials/" class="text-body-text hover:text-navy transition text-sm">Testimonials</a></li>
-                                                <li><a href="/news/" class="text-body-text hover:text-navy transition text-sm">News</a></li>
-                                                <li><a href="/franchise/" class="text-body-text hover:text-navy transition text-sm">Franchise</a></li>
-                                            </ul>
-                                        </div>
-                                        <!-- Legal -->
-                                        <div>
-                                            <h5 class="font-semibold text-navy mb-3 text-sm uppercase tracking-wide">Legal</h5>
-                                            <ul class="space-y-2">
-                                                <li><a href="/terms/" class="text-body-text hover:text-navy transition text-sm">Terms & Conditions</a></li>
-                                                <li><a href="/privacy/" class="text-body-text hover:text-navy transition text-sm">Privacy Policy</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- CTA Panel -->
-                                <div class="col-span-2 bg-gradient-to-br from-lavender to-lavender/50 p-6 flex flex-col justify-center">
-                                    <h4 class="font-bold text-navy mb-2">Become a Founding Customer</h4>
-                                    <p class="text-sm text-body-text mb-4">Get your kitchen transformed at cost price in exchange for photos and a testimonial.</p>
-                                    <a href="/founding-customer/" class="inline-block border-2 border-navy text-navy text-center px-5 py-2 rounded-lg font-medium hover:bg-navy hover:text-white transition text-sm">
-                                        Learn More
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
 
                 <a href="/contact/" class="bg-navy text-white px-6 py-2.5 rounded-lg font-medium hover:bg-secondary-blue transition">Get a Free Quote</a>
@@ -148,6 +37,132 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                 </svg>
             </button>
+        </div>
+    </div>
+
+    <!-- Full-Width Mega Menus Container -->
+    <div class="hidden lg:block">
+        <!-- Services Mega Menu -->
+        <div id="services-mega-menu" class="mega-menu absolute left-0 right-0 top-full bg-white shadow-xl border-t border-gray-100">
+            <div class="max-w-7xl mx-auto">
+                <div class="grid grid-cols-5 min-h-[320px]">
+                    <!-- Service Links (60%) -->
+                    <div class="col-span-3 p-8">
+                        <div class="grid grid-cols-2 gap-4">
+                            <a href="/services/cabinet-doors/" class="group flex items-start p-4 rounded-xl hover:bg-gray-50 transition">
+                                <div class="flex-shrink-0 w-12 h-12 bg-lavender rounded-lg flex items-center justify-center mr-4 group-hover:bg-navy transition">
+                                    <svg class="w-6 h-6 text-navy group-hover:text-white transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6z"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <span class="block font-semibold text-navy text-base mb-1">Cabinet Doors & Panels</span>
+                                    <span class="text-sm text-body-text leading-relaxed">Replace your doors, keep your cabinets, save thousands</span>
+                                </div>
+                            </a>
+                            <a href="/services/worktops/" class="group flex items-start p-4 rounded-xl hover:bg-gray-50 transition">
+                                <div class="flex-shrink-0 w-12 h-12 bg-lavender rounded-lg flex items-center justify-center mr-4 group-hover:bg-navy transition">
+                                    <svg class="w-6 h-6 text-navy group-hover:text-white transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5h16a1 1 0 011 1v3a1 1 0 01-1 1H4a1 1 0 01-1-1V6a1 1 0 011-1z"/>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 10v9m12-9v9"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <span class="block font-semibold text-navy text-base mb-1">Worktops</span>
+                                    <span class="text-sm text-body-text leading-relaxed">Laminate to quartz - expertly templated and fitted</span>
+                                </div>
+                            </a>
+                            <a href="/services/handles-hardware/" class="group flex items-start p-4 rounded-xl hover:bg-gray-50 transition">
+                                <div class="flex-shrink-0 w-12 h-12 bg-lavender rounded-lg flex items-center justify-center mr-4 group-hover:bg-navy transition">
+                                    <svg class="w-6 h-6 text-navy group-hover:text-white transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <span class="block font-semibold text-navy text-base mb-1">Handles & Hardware</span>
+                                    <span class="text-sm text-body-text leading-relaxed">The finishing touches that make all the difference</span>
+                                </div>
+                            </a>
+                            <a href="/services/sinks-appliances/" class="group flex items-start p-4 rounded-xl hover:bg-gray-50 transition">
+                                <div class="flex-shrink-0 w-12 h-12 bg-lavender rounded-lg flex items-center justify-center mr-4 group-hover:bg-navy transition">
+                                    <svg class="w-6 h-6 text-navy group-hover:text-white transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <span class="block font-semibold text-navy text-base mb-1">Sinks & Appliances</span>
+                                    <span class="text-sm text-body-text leading-relaxed">Complete your transformation with new fixtures</span>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-gray-100">
+                            <a href="/services/" class="inline-flex items-center text-navy font-medium hover:text-secondary-blue transition">
+                                View All Services
+                                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- CTA Panel (40%) -->
+                    <div class="col-span-2 bg-lavender p-8 flex flex-col justify-center">
+                        <h4 class="font-bold text-navy text-xl mb-3">Not sure where to start?</h4>
+                        <p class="text-body-text mb-6 leading-relaxed">Book a free home consultation and we'll help you plan your perfect kitchen makeover.</p>
+                        <a href="/contact/" class="inline-block bg-navy text-white text-center px-6 py-3 rounded-lg font-medium hover:bg-secondary-blue transition">
+                            Get a Free Quote
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- More Mega Menu -->
+        <div id="more-mega-menu" class="mega-menu absolute left-0 right-0 top-full bg-white shadow-xl border-t border-gray-100">
+            <div class="max-w-7xl mx-auto">
+                <div class="grid grid-cols-5 min-h-[320px]">
+                    <!-- Link Columns (60%) -->
+                    <div class="col-span-3 p-8">
+                        <div class="grid grid-cols-3 gap-8">
+                            <!-- Get Started -->
+                            <div>
+                                <h5 class="font-bold text-navy mb-4 text-xs uppercase tracking-wider">Get Started</h5>
+                                <ul class="space-y-3">
+                                    <li><a href="/founding-customer/" class="text-body-text hover:text-navy transition font-medium">Founding Customer</a></li>
+                                    <li><a href="/contact/" class="text-body-text hover:text-navy transition font-medium">Contact</a></li>
+                                    <li><a href="/faqs/" class="text-body-text hover:text-navy transition font-medium">FAQs</a></li>
+                                </ul>
+                            </div>
+                            <!-- Company -->
+                            <div>
+                                <h5 class="font-bold text-navy mb-4 text-xs uppercase tracking-wider">Company</h5>
+                                <ul class="space-y-3">
+                                    <li><a href="/about/" class="text-body-text hover:text-navy transition font-medium">About</a></li>
+                                    <li><a href="/gallery/" class="text-body-text hover:text-navy transition font-medium">Gallery</a></li>
+                                    <li><a href="/testimonials/" class="text-body-text hover:text-navy transition font-medium">Testimonials</a></li>
+                                    <li><a href="/news/" class="text-body-text hover:text-navy transition font-medium">News</a></li>
+                                    <li><a href="/franchise/" class="text-body-text hover:text-navy transition font-medium">Franchise</a></li>
+                                </ul>
+                            </div>
+                            <!-- Legal -->
+                            <div>
+                                <h5 class="font-bold text-navy mb-4 text-xs uppercase tracking-wider">Legal</h5>
+                                <ul class="space-y-3">
+                                    <li><a href="/terms/" class="text-body-text hover:text-navy transition font-medium">Terms & Conditions</a></li>
+                                    <li><a href="/privacy/" class="text-body-text hover:text-navy transition font-medium">Privacy Policy</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- CTA Panel (40%) -->
+                    <div class="col-span-2 bg-lavender p-8 flex flex-col justify-center">
+                        <h4 class="font-bold text-navy text-xl mb-3">Become a Founding Customer</h4>
+                        <p class="text-body-text mb-6 leading-relaxed">Get your kitchen transformed at cost price in exchange for photos and a testimonial.</p>
+                        <a href="/founding-customer/" class="inline-block border-2 border-navy text-navy text-center px-6 py-3 rounded-lg font-medium hover:bg-navy hover:text-white transition">
+                            Learn More
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
