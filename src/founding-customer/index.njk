@@ -1,0 +1,297 @@
+---
+layout: base.njk
+title: Become a Founding Customer | Fresh Front Kitchens
+description: Get your kitchen transformed at cost price in exchange for helping us build our portfolio. Limited founding customer positions available.
+canonicalPath: /founding-customer/
+extraScripts: |
+    <script>
+        // File Upload Display
+        const fileInput = document.getElementById('photos');
+        const fileList = document.getElementById('file-list');
+
+        if (fileInput) {
+            fileInput.addEventListener('change', (e) => {
+                const files = Array.from(e.target.files);
+                if (files.length > 0) {
+                    fileList.innerHTML = files.map(file => `<span class="inline-block bg-gray-100 px-3 py-1 rounded mr-2 mb-2">${file.name}</span>`).join('');
+                } else {
+                    fileList.innerHTML = '';
+                }
+            });
+        }
+    </script>
+---
+
+<!-- Hero Section -->
+<section class="pt-28 md:pt-32 pb-16 md:pb-20 bg-gradient-to-br from-navy to-secondary-blue text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mx-auto text-center">
+            <span class="inline-block bg-white/20 text-white px-4 py-2 rounded-full text-sm font-medium mb-6">
+                Limited Positions Available
+            </span>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+                Become a Fresh Front Founding Customer
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-200 mb-8">
+                Get your kitchen transformed at cost price &mdash; in exchange for helping us build our portfolio
+            </p>
+            <a href="#apply" class="inline-block bg-white text-navy px-8 py-4 rounded-lg font-semibold hover:bg-lavender transition shadow-lg">
+                Apply Now
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- What's the Deal Section -->
+<section class="py-16 md:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mx-auto text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-navy mb-6">
+                What's the Deal?
+            </h2>
+            <p class="text-lg text-body-text">
+                We're launching Fresh Front Kitchens and need to build our portfolio of stunning kitchen transformations. That's where you come in.
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80" alt="Kitchen transformation" class="rounded-2xl shadow-xl">
+            </div>
+            <div>
+                <h3 class="text-2xl font-bold text-navy mb-4">You Get:</h3>
+                <ul class="space-y-4 mb-8">
+                    <li class="flex items-start">
+                        <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center mr-4 flex-shrink-0 mt-1">
+                            <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <span class="font-semibold text-dark-text">Cost Price Only</span>
+                            <p class="text-body-text">Pay only for materials and fitting &mdash; no markup, no profit margin. Just the genuine cost.</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center mr-4 flex-shrink-0 mt-1">
+                            <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <span class="font-semibold text-dark-text">Same Quality Workmanship</span>
+                            <p class="text-body-text">We're not cutting corners. You'll get the exact same quality and care as our full-price customers.</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center mr-4 flex-shrink-0 mt-1">
+                            <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <span class="font-semibold text-dark-text">Massive Savings</span>
+                            <p class="text-body-text">Save significantly more than our already competitive prices. This is genuinely the cheapest way to get a quality kitchen makeover.</p>
+                        </div>
+                    </li>
+                </ul>
+
+                <h3 class="text-2xl font-bold text-navy mb-4">We Get:</h3>
+                <ul class="space-y-4">
+                    <li class="flex items-start">
+                        <div class="w-8 h-8 bg-lavender rounded-full flex items-center justify-center mr-4 flex-shrink-0 mt-1">
+                            <svg class="w-5 h-5 text-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <span class="font-semibold text-dark-text">Professional Photos</span>
+                            <p class="text-body-text">Before and after photos we can use on our website and marketing materials.</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <div class="w-8 h-8 bg-lavender rounded-full flex items-center justify-center mr-4 flex-shrink-0 mt-1">
+                            <svg class="w-5 h-5 text-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <span class="font-semibold text-dark-text">Your Testimonial</span>
+                            <p class="text-body-text">A written review and potentially a video testimonial about your experience.</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <div class="w-8 h-8 bg-lavender rounded-full flex items-center justify-center mr-4 flex-shrink-0 mt-1">
+                            <svg class="w-5 h-5 text-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <span class="font-semibold text-dark-text">Marketing Permission</span>
+                            <p class="text-body-text">Permission to share your story and images across our marketing channels.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- How It Works -->
+<section class="py-16 md:py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mx-auto text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-navy mb-6">
+                How It Works
+            </h2>
+        </div>
+
+        <div class="grid md:grid-cols-4 gap-8">
+            <div class="text-center">
+                <div class="w-16 h-16 bg-navy text-white rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">1</div>
+                <h3 class="font-bold text-dark-text mb-2">Apply Below</h3>
+                <p class="text-body-text text-sm">Fill out our simple application form with details about your kitchen.</p>
+            </div>
+            <div class="text-center">
+                <div class="w-16 h-16 bg-navy text-white rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">2</div>
+                <h3 class="font-bold text-dark-text mb-2">We Review</h3>
+                <p class="text-body-text text-sm">We'll assess if your kitchen is right for our portfolio needs.</p>
+            </div>
+            <div class="text-center">
+                <div class="w-16 h-16 bg-navy text-white rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">3</div>
+                <h3 class="font-bold text-dark-text mb-2">Free Consultation</h3>
+                <p class="text-body-text text-sm">We visit your home to discuss options and provide a cost-price quote.</p>
+            </div>
+            <div class="text-center">
+                <div class="w-16 h-16 bg-navy text-white rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">4</div>
+                <h3 class="font-bold text-dark-text mb-2">Transform!</h3>
+                <p class="text-body-text text-sm">We transform your kitchen and capture the results for our portfolio.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="py-16 md:py-24 bg-white">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl md:text-4xl font-bold text-navy mb-12 text-center">
+            Common Questions
+        </h2>
+
+        <div class="space-y-6">
+            <div class="bg-gray-50 rounded-xl p-6">
+                <h3 class="font-bold text-dark-text mb-2">How much will I actually save?</h3>
+                <p class="text-body-text">Every kitchen is different, but founding customers typically save 40-60% compared to our standard pricing. You're paying what we pay &mdash; nothing more.</p>
+            </div>
+
+            <div class="bg-gray-50 rounded-xl p-6">
+                <h3 class="font-bold text-dark-text mb-2">Is the quality really the same?</h3>
+                <p class="text-body-text">Absolutely. These kitchens are going in our portfolio &mdash; we want them to look incredible! You'll receive the same materials, craftsmanship, and attention to detail as any customer.</p>
+            </div>
+
+            <div class="bg-gray-50 rounded-xl p-6">
+                <h3 class="font-bold text-dark-text mb-2">What if I'm not comfortable with photos/video?</h3>
+                <p class="text-body-text">We understand. Photos of your kitchen are essential, but we're flexible on showing faces. We can discuss what you're comfortable with during the consultation.</p>
+            </div>
+
+            <div class="bg-gray-50 rounded-xl p-6">
+                <h3 class="font-bold text-dark-text mb-2">How many founding customers are you accepting?</h3>
+                <p class="text-body-text">We're limiting founding customer positions to ensure we can deliver exceptional results and service. Once we've filled our spots, this offer ends.</p>
+            </div>
+
+            <div class="bg-gray-50 rounded-xl p-6">
+                <h3 class="font-bold text-dark-text mb-2">What areas are eligible?</h3>
+                <p class="text-body-text">We're looking for founding customers in Chester, Wirral, Cheshire, North Wales, and Warrington. If you're nearby but not sure, apply anyway!</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Application Form -->
+<section id="apply" class="py-16 md:py-24 bg-lavender">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-navy mb-4">
+                Apply to Become a Founding Customer
+            </h2>
+            <p class="text-lg text-body-text">
+                Tell us about yourself and your kitchen. We'll be in touch within 48 hours.
+            </p>
+        </div>
+
+        <div class="bg-white rounded-2xl shadow-xl p-8">
+            <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" enctype="multipart/form-data" class="space-y-6">
+                <input type="hidden" name="form_type" value="founding_customer">
+
+                <!-- Contact Details -->
+                <div class="grid sm:grid-cols-2 gap-4">
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-dark-text mb-1">Full Name *</label>
+                        <input type="text" id="name" name="name" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-navy focus:border-transparent outline-none transition">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-dark-text mb-1">Email Address *</label>
+                        <input type="email" id="email" name="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-navy focus:border-transparent outline-none transition">
+                    </div>
+                </div>
+
+                <div class="grid sm:grid-cols-2 gap-4">
+                    <div>
+                        <label for="phone" class="block text-sm font-medium text-dark-text mb-1">Phone Number *</label>
+                        <input type="tel" id="phone" name="phone" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-navy focus:border-transparent outline-none transition">
+                    </div>
+                    <div>
+                        <label for="postcode" class="block text-sm font-medium text-dark-text mb-1">Postcode *</label>
+                        <input type="text" id="postcode" name="postcode" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-navy focus:border-transparent outline-none transition" placeholder="e.g. CH1 1AA">
+                    </div>
+                </div>
+
+                <!-- Kitchen Details -->
+                <div>
+                    <label for="kitchen_details" class="block text-sm font-medium text-dark-text mb-1">Tell us about your kitchen *</label>
+                    <textarea id="kitchen_details" name="kitchen_details" rows="4" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-navy focus:border-transparent outline-none transition resize-none" placeholder="How old is it? What style are the cabinets? What would you like to change?"></textarea>
+                </div>
+
+                <div>
+                    <label for="why_founding" class="block text-sm font-medium text-dark-text mb-1">Why would you like to be a Founding Customer? *</label>
+                    <textarea id="why_founding" name="why_founding" rows="4" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-navy focus:border-transparent outline-none transition resize-none" placeholder="Tell us a bit about your situation and why this offer appeals to you..."></textarea>
+                </div>
+
+                <!-- Photo Upload -->
+                <div>
+                    <label class="block text-sm font-medium text-dark-text mb-1">Upload photos of your kitchen (optional)</label>
+                    <p class="text-sm text-body-text mb-3">Photos help us assess if your kitchen is right for our portfolio. You can upload up to 5 images.</p>
+                    <div class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-navy transition cursor-pointer">
+                        <input type="file" id="photos" name="photos" multiple accept="image/*" class="hidden">
+                        <label for="photos" class="cursor-pointer">
+                            <svg class="w-12 h-12 text-gray-400 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                            </svg>
+                            <span class="text-navy font-medium">Click to upload</span>
+                            <span class="text-body-text"> or drag and drop</span>
+                            <p class="text-sm text-gray-400 mt-1">PNG, JPG up to 10MB each</p>
+                        </label>
+                    </div>
+                    <div id="file-list" class="mt-3 text-sm text-body-text"></div>
+                </div>
+
+                <!-- Agreement -->
+                <div class="flex items-start">
+                    <input type="checkbox" id="agreement" name="agreement" required class="mt-1 mr-3 h-4 w-4 text-navy border-gray-300 rounded focus:ring-navy">
+                    <label for="agreement" class="text-sm text-body-text">
+                        I understand that as a Founding Customer, I agree to provide photos, a testimonial, and marketing permission in exchange for cost-price kitchen makeover services. *
+                    </label>
+                </div>
+
+                <button type="submit" class="w-full bg-navy text-white py-4 rounded-lg font-semibold hover:bg-secondary-blue transition shadow-lg text-lg">
+                    Submit My Application
+                </button>
+
+                <p class="text-sm text-center text-body-text">
+                    We'll review your application and get back to you within 48 hours.
+                </p>
+            </form>
+        </div>
+    </div>
+</section>

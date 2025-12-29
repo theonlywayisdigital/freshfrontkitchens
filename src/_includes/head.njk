@@ -1,0 +1,124 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ title }}</title>
+<meta name="description" content="{{ description }}">
+
+<!-- Canonical URL -->
+<link rel="canonical" href="https://freshfrontkitchens.co.uk{{ canonicalPath | default('/') }}">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://freshfrontkitchens.co.uk{{ canonicalPath | default('/') }}">
+<meta property="og:title" content="{{ title }}">
+<meta property="og:description" content="{{ description }}">
+<meta property="og:image" content="https://freshfrontkitchens.co.uk/assets/FreshFrontKitchensLogo.png">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://freshfrontkitchens.co.uk{{ canonicalPath | default('/') }}">
+<meta name="twitter:title" content="{{ title }}">
+<meta name="twitter:description" content="{{ description }}">
+<meta name="twitter:image" content="https://freshfrontkitchens.co.uk/assets/FreshFrontKitchensLogo.png">
+
+<!-- Structured Data - LocalBusiness -->
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Fresh Front Kitchens",
+    "description": "Professional kitchen makeover services. Transform your kitchen in just 2-3 days at a fraction of the cost of a full replacement.",
+    "url": "https://freshfrontkitchens.co.uk",
+    "logo": "https://freshfrontkitchens.co.uk/assets/FreshFrontKitchensLogo.png",
+    "image": "https://freshfrontkitchens.co.uk/assets/FreshFrontKitchensLogo.png",
+    "telephone": "01234 567890",
+    "email": "hello@freshfrontkitchens.co.uk",
+    "areaServed": [
+        {"@type": "City", "name": "Chester"},
+        {"@type": "City", "name": "Wirral"},
+        {"@type": "AdministrativeArea", "name": "Cheshire"},
+        {"@type": "AdministrativeArea", "name": "North Wales"},
+        {"@type": "City", "name": "Warrington"}
+    ],
+    "priceRange": "$$",
+    "serviceType": ["Kitchen Makeover", "Kitchen Refurbishment", "Cabinet Door Replacement", "Worktop Replacement"],
+    "sameAs": []
+}
+</script>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="/css/custom.css">
+<script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    'navy': '#1e3a6e',
+                    'secondary-blue': '#6b8cce',
+                    'lavender': '#e8e6f2',
+                    'dark-text': '#1a1a2e',
+                    'body-text': '#4a5568',
+                }
+            }
+        }
+    }
+</script>
+<style>
+    html {
+        scroll-behavior: smooth;
+    }
+    /* Mega Menu Styles */
+    .mega-menu {
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: all 0.2s ease-in-out;
+    }
+    .mega-menu.active {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+    .nav-item:hover .mega-menu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+    .nav-trigger {
+        position: relative;
+    }
+    .nav-trigger::after {
+        content: '';
+        display: inline-block;
+        width: 6px;
+        height: 6px;
+        border-right: 1.5px solid currentColor;
+        border-bottom: 1.5px solid currentColor;
+        transform: rotate(45deg);
+        margin-left: 6px;
+        margin-bottom: 2px;
+        transition: transform 0.2s ease;
+    }
+    .nav-item:hover .nav-trigger::after,
+    .nav-trigger.active::after {
+        transform: rotate(-135deg);
+        margin-bottom: -2px;
+    }
+    /* Mobile accordion */
+    .mobile-accordion-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+    }
+    .mobile-accordion-content.open {
+        max-height: 800px;
+    }
+    .mobile-accordion-trigger svg {
+        transition: transform 0.2s ease;
+    }
+    .mobile-accordion-trigger.open svg {
+        transform: rotate(180deg);
+    }
+    {% if extraStyles %}
+    {{ extraStyles | safe }}
+    {% endif %}
+</style>

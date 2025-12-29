@@ -1,0 +1,94 @@
+<!-- Navigation Script -->
+<script>
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuOpen = mobileMenuBtn.querySelector('.menu-open');
+    const menuClose = mobileMenuBtn.querySelector('.menu-close');
+
+    mobileMenuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+        menuOpen.classList.toggle('hidden');
+        menuClose.classList.toggle('hidden');
+    });
+
+    // Mobile accordion toggles
+    const accordionTriggers = document.querySelectorAll('.mobile-accordion-trigger');
+    accordionTriggers.forEach(trigger => {
+        trigger.addEventListener('click', () => {
+            const content = trigger.nextElementSibling;
+            trigger.classList.toggle('open');
+            content.classList.toggle('open');
+        });
+    });
+
+    // Close mega menus when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.nav-item')) {
+            document.querySelectorAll('.mega-menu').forEach(menu => {
+                menu.classList.remove('active');
+            });
+            document.querySelectorAll('.nav-trigger').forEach(trigger => {
+                trigger.classList.remove('active');
+                trigger.setAttribute('aria-expanded', 'false');
+            });
+        }
+    });
+
+    // Keyboard accessibility for mega menus
+    document.querySelectorAll('.nav-trigger').forEach(trigger => {
+        trigger.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                const megaMenu = trigger.nextElementSibling;
+                const isOpen = megaMenu.classList.contains('active');
+
+                // Close all menus first
+                document.querySelectorAll('.mega-menu').forEach(menu => {
+                    menu.classList.remove('active');
+                });
+                document.querySelectorAll('.nav-trigger').forEach(t => {
+                    t.classList.remove('active');
+                    t.setAttribute('aria-expanded', 'false');
+                });
+
+                if (!isOpen) {
+                    megaMenu.classList.add('active');
+                    trigger.classList.add('active');
+                    trigger.setAttribute('aria-expanded', 'true');
+                }
+            }
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.mega-menu').forEach(menu => {
+                    menu.classList.remove('active');
+                });
+                document.querySelectorAll('.nav-trigger').forEach(t => {
+                    t.classList.remove('active');
+                    t.setAttribute('aria-expanded', 'false');
+                });
+            }
+        });
+    });
+
+    // Hide header on scroll down, show on scroll up
+    let lastScrollY = window.scrollY;
+    const nav = document.querySelector('nav');
+
+    window.addEventListener('scroll', () => {
+        // Close mobile menu on scroll
+        if (!mobileMenu.classList.contains('hidden')) {
+            mobileMenu.classList.add('hidden');
+            menuOpen.classList.remove('hidden');
+            menuClose.classList.add('hidden');
+        }
+
+        if (window.scrollY > lastScrollY && window.scrollY > 100) {
+            nav.style.transform = 'translateY(-100%)';
+            nav.style.opacity = '0';
+        } else {
+            nav.style.transform = 'translateY(0)';
+            nav.style.opacity = '1';
+        }
+        lastScrollY = window.scrollY;
+    });
+</script>
