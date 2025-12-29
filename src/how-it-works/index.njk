@@ -67,31 +67,32 @@ extraStyles: |
             position: relative;
         }
 
+        /* Mobile: line at 32px (center of 64px step number) */
         .timeline-line {
             position: absolute;
-            left: 40px;
+            left: 32px;
             top: 0;
             bottom: 0;
             width: 4px;
             background: #e5e7eb;
-            transform: translateX(-50%);
         }
 
         .timeline-progress {
             position: absolute;
-            left: 40px;
+            left: 32px;
             top: 0;
             width: 4px;
             background: linear-gradient(180deg, #1e3a6e 0%, #6b8cce 100%);
-            transform: translateX(-50%);
             height: 0%;
             transition: height 0.1s ease-out;
         }
 
+        /* Desktop: line at center */
         @media (min-width: 768px) {
             .timeline-line,
             .timeline-progress {
                 left: 50%;
+                transform: translateX(-50%);
             }
         }
 
