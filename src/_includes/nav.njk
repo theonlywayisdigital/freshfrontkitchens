@@ -1,14 +1,14 @@
 <!-- Navigation -->
 <nav class="fixed top-0 left-0 right-0 bg-white shadow-md z-50 transition-all duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex items-center h-24 md:h-28">
+        <div class="relative flex items-center justify-between h-24 md:h-28">
             <!-- Logo (left) -->
-            <a href="/" class="flex items-center flex-shrink-0">
+            <a href="/" class="flex items-center flex-shrink-0 relative z-10">
                 <img src="/assets/FreshFrontKitchensLogo.png" alt="Fresh Front Kitchens" class="h-28 md:h-[140px] w-auto">
             </a>
 
-            <!-- Desktop Navigation (centered) -->
-            <div class="hidden lg:flex items-center justify-center flex-1 space-x-8">
+            <!-- Desktop Navigation (absolutely centered) -->
+            <div class="hidden lg:flex items-center space-x-8 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
                 <a href="/how-it-works/" class="text-body-text hover:text-navy font-medium transition">How It Works</a>
 
                 <!-- Services Mega Menu -->
@@ -27,12 +27,12 @@
             </div>
 
             <!-- CTA Button (right) -->
-            <div class="hidden lg:block flex-shrink-0">
+            <div class="hidden lg:block flex-shrink-0 relative z-10">
                 <a href="/contact/" class="bg-navy text-white px-6 py-2.5 rounded-lg font-medium hover:bg-secondary-blue transition">Get a Free Quote</a>
             </div>
 
             <!-- Mobile Menu Button -->
-            <button id="mobile-menu-btn" class="lg:hidden text-navy p-2 ml-auto" aria-label="Toggle menu">
+            <button id="mobile-menu-btn" class="lg:hidden text-navy p-2 relative z-10" aria-label="Toggle menu">
                 <svg class="w-6 h-6 menu-open" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                 </svg>
@@ -53,10 +53,8 @@
                     <div class="col-span-3 p-8">
                         <div class="grid grid-cols-2 gap-4">
                             <a href="/services/cabinet-doors/" class="group flex items-start p-4 rounded-xl hover:bg-gray-50 transition">
-                                <div class="flex-shrink-0 w-12 h-12 bg-lavender rounded-lg flex items-center justify-center mr-4 group-hover:bg-navy transition">
-                                    <svg class="w-6 h-6 text-navy group-hover:text-white transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6z"/>
-                                    </svg>
+                                <div class="flex-shrink-0 w-12 h-12 rounded-lg flex items-center justify-center mr-4">
+                                    <img src="/assets/icons/doodle-motif-466-door-hover-attempt.svg" alt="" class="w-10 h-10">
                                 </div>
                                 <div>
                                     <span class="block font-semibold text-navy text-base mb-1">Cabinet Doors & Panels</span>
@@ -64,11 +62,8 @@
                                 </div>
                             </a>
                             <a href="/services/worktops/" class="group flex items-start p-4 rounded-xl hover:bg-gray-50 transition">
-                                <div class="flex-shrink-0 w-12 h-12 bg-lavender rounded-lg flex items-center justify-center mr-4 group-hover:bg-navy transition">
-                                    <svg class="w-6 h-6 text-navy group-hover:text-white transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5h16a1 1 0 011 1v3a1 1 0 01-1 1H4a1 1 0 01-1-1V6a1 1 0 011-1z"/>
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 10v9m12-9v9"/>
-                                    </svg>
+                                <div class="flex-shrink-0 w-12 h-12 rounded-lg flex items-center justify-center mr-4">
+                                    <img src="/assets/icons/doodle-motif-156-wooden-floor-hover-pinch.svg" alt="" class="w-10 h-10">
                                 </div>
                                 <div>
                                     <span class="block font-semibold text-navy text-base mb-1">Worktops</span>
@@ -76,10 +71,8 @@
                                 </div>
                             </a>
                             <a href="/services/handles-hardware/" class="group flex items-start p-4 rounded-xl hover:bg-gray-50 transition">
-                                <div class="flex-shrink-0 w-12 h-12 bg-lavender rounded-lg flex items-center justify-center mr-4 group-hover:bg-navy transition">
-                                    <svg class="w-6 h-6 text-navy group-hover:text-white transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/>
-                                    </svg>
+                                <div class="flex-shrink-0 w-12 h-12 rounded-lg flex items-center justify-center mr-4">
+                                    <img src="/assets/icons/doodle-motif-543-drilling-machine-hover-pinch.svg" alt="" class="w-10 h-10">
                                 </div>
                                 <div>
                                     <span class="block font-semibold text-navy text-base mb-1">Handles & Hardware</span>
@@ -87,10 +80,8 @@
                                 </div>
                             </a>
                             <a href="/services/sinks-appliances/" class="group flex items-start p-4 rounded-xl hover:bg-gray-50 transition">
-                                <div class="flex-shrink-0 w-12 h-12 bg-lavender rounded-lg flex items-center justify-center mr-4 group-hover:bg-navy transition">
-                                    <svg class="w-6 h-6 text-navy group-hover:text-white transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
-                                    </svg>
+                                <div class="flex-shrink-0 w-12 h-12 rounded-lg flex items-center justify-center mr-4">
+                                    <img src="/assets/icons/doodle-motif-517-water-drop-hover-pinch.svg" alt="" class="w-10 h-10">
                                 </div>
                                 <div>
                                     <span class="block font-semibold text-navy text-base mb-1">Sinks & Appliances</span>
