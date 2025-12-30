@@ -1,8 +1,8 @@
 module.exports = function(eleventyConfig) {
-  // Pass through static assets
-  eleventyConfig.addPassthroughCopy("assets");
-  eleventyConfig.addPassthroughCopy("css");
-  eleventyConfig.addPassthroughCopy("images");
+  // Pass through static assets (paths relative to project root, not src)
+  eleventyConfig.addPassthroughCopy({ "assets": "assets" });
+  eleventyConfig.addPassthroughCopy({ "css": "css" });
+  eleventyConfig.addPassthroughCopy({ "images": "images" });
   eleventyConfig.addPassthroughCopy("robots.txt");
   eleventyConfig.addPassthroughCopy("sitemap.xml");
 
